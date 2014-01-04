@@ -7,7 +7,11 @@
 
 -- \. c:\projects\DeepakChopra_SQL\deepak_chopra.my.sql
 
+
+
 select "requires you to USE a database before running" as "!!! WARNING !!!";
+
+
 
 
 
@@ -21,6 +25,8 @@ drop procedure if exists speak;
 
 
 
+
+
 select "creating tables" as "process step";
 
 create table kinds(id tinyint auto_increment primary key, label varchar(255));
@@ -29,9 +35,12 @@ create table terms(id tinyint auto_increment primary key, label varchar(255), ki
 
 
 
+
+
 select "creating functions and procedures" as "process step";
 
 delimiter //
+
 
 create procedure insertterm(IN ulabel varchar(255), IN ukind varchar(255))
 begin
@@ -41,6 +50,7 @@ begin
   insert into terms(label, kind) values(ulabel, tid);
 
 end//
+
 
 create procedure speak()
 begin
@@ -60,6 +70,8 @@ begin
 end//
 
 delimiter ;
+
+
 
 
 
@@ -87,3 +99,10 @@ call insertterm('choices.',            'finishes');
 call insertterm('creativity.',         'finishes');
 call insertterm('actions.',            'finishes');
 
+
+
+
+
+select "dry run" as "complete";
+
+call speak();
